@@ -12,8 +12,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "myec2" {
-  ami = "${var.ec2_ami_id}"
-  aws_instance_type = "${var.aws_instance_type}"
+  ami = var.ec2_ami_id
+  instance_type = var.instance_type
  
 
   tags = {
