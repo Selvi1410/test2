@@ -8,7 +8,7 @@ variable "ec2_ami_id" {
   default = "ami-0f62d9254ca98e1aa"
 }
 
-variable "aws_instance_type" {
+variable "instance_type" {
   description = "type of EC2 instance to provision."
   default = "c5.2xlarge"
 }
