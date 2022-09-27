@@ -23,26 +23,6 @@ variable "ec2_instance_count" {
   default     = 1
 }
 
-variable "Environment" {
-  description = "name of the Environment "
-  default = "DEV1"
-}
-
-variable "Environment_type" {
-  description = "type to pass in the Environment "
-  default = "Development"
-}
-
-
-variable "Resource_Type_BlockStorage" {
-  description = "name of the storage"
-  default = "BlockStorage"
-}
-
-variable "Storage_type" {
-  description = "type of the Storage"
-  default = "General SSD"
-}
 
 
 
