@@ -15,9 +15,9 @@ allowed_types = ["c5.2xlarge"]
 
 # Get all EC2 instances
 types_allowed = rule {
-      allEC2Instances as _, instances {
-      instances.change.after.instance_type in allowed_types
-      }
+    allEC2Instances as _, instances {
+    instances.change.after.instance_type in allowed_types
+    }
 }
 
 # Main rule
