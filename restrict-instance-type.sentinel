@@ -5,24 +5,22 @@
 # with alias "plan"
 import "tfplan/v2" as tfplan
 
+aws_instance = filter tfplan.resource_changes as _, rc {
+    rc.type is "aws_instance" and
+    (rc.change.actions contains "create" or   rc.change.actions contain is ["update"])
+}
 # Allowed EC2 Instance Types
 # Include "null" to allow missing or computed values
-allowed_types = ["C5.2xlarge"]
+allowed_types = ["c5.2xlarge"]
 
 # Get all EC2 instances
-allEC2Instances= filter tfplan.resource_changes as _, rc{
-     rc.type is "instance_type"
-     }
-
-# Filter to EC2 instances with violations
-# Warnings will be printed for all violations since the last parameter is true
-violatingEC2Instances = tfplan.filter_attribute_not_in_list(allEC2Instances,
-                        "instance_type", allowed_types, true)
-
-# Count violations
-violations = length(violatingEC2Instances["messages"])
+types_allowed = rule {
+     allEC2Instances as _, instances {
+     instances.change.after.instance_type in allowed_types
+      }
+}
 
 # Main rule
 main = rule {
-  violations is 0
+  (allowed_types) else false
 }
