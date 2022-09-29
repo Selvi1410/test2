@@ -1,5 +1,5 @@
 module "tfplan-functions" {
-    source = "./Sentinel policy/tfplan-functions.sentinel"
+    source = "./sentinel policy/tfplan-functions.sentinel"
 }
 
 
