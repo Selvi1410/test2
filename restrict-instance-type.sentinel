@@ -10,7 +10,7 @@ ec2_instances = filter tfplan.resource_changes as _, rc {
 
 # Allowed Types
 allowed_types = [
-    "c5.2xlarge",
+    "t2.micro",
 ]
 
 # Rule to restrict instance types
