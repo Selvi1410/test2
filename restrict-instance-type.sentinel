@@ -10,7 +10,6 @@ ec2_instances = filter tfplan.resource_changes as _, rc {
 # Allowed Types
 allowed_types = [
     "C5.2xlarge",
-     
 ]
 
 
@@ -21,7 +20,7 @@ instance_type_allowed = rule {
     }
 }
 
-# Main rule that requires other rules to be true
+
 main = rule {
-    (allowed_types) else true
+    (instance_type_allowed) else false
 }
