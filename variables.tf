@@ -10,7 +10,7 @@ variable "ec2_ami_id" {
 
 variable "instance_type" {
   description = "type of EC2 instance to provision."
-  default = "c5.2xlarge"
+  default = "t2.micro"
 }
 
 variable "ec2_instance_name" {
