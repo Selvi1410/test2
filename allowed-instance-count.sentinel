@@ -1,4 +1,5 @@
 import "tfconfig/v2" as config
+import "strings"
 
 
 allowed_instant_count = 1
