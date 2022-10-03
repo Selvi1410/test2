@@ -1,5 +1,5 @@
 
-import "tfconfig-function" as config
+import "tfconfig/v2" as config
 
 
 allowed_instant_count = 1
