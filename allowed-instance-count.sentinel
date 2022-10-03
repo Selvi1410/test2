@@ -5,7 +5,7 @@ import "tfconfig/v2" as config
 allowed_instant_count = 1
 
 
-allEC2Instances = config.find_all_resources("aws_instance")
+allEC2Instances = config.filter_all_resources("aws_instance")
 
 
 # Warnings will be printed for all violations since the last parameter is true
