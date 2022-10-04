@@ -1,4 +1,4 @@
-import "tfconfig/v2" as config
+import "tfconfig/v2" as tfconfig
 import "types"
 
 
@@ -13,11 +13,11 @@ find_all_resources = func() {
 allowed_instant_count = 1
 
 
-allEC2Instances = config.find_all_resources("aws_instance")
+allEC2Instances = tfconfig.find_all_resources("aws_instance")
 
 
 # Warnings will be printed for all violations since the last parameter is true
-violatingInstancecount = config.filter_attribute_not_in_list(allEC2Instances,
+violatingInstancecount = tfconfig.filter_attribute_not_in_list(allEC2Instances,
                         "count", allowed_types, true)
 
 
