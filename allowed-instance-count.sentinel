@@ -3,6 +3,14 @@ import "tfplan/v2" as plan
 import "strings"
 
 
+find_all_resources = func() {
+	resources = filter tfconfig.resources as address, r {
+		r.mode is "managed"
+	}
+
+	return resources
+}
+
 allowed_instant_count = 1
 
 
