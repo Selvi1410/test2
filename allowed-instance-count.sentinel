@@ -13,7 +13,7 @@ allEC2Instances = filter tfconfig.resources as _, rc {
 
 # Warnings will be printed for all violations since the last parameter is true
 violatingInstancecount = tfconfig.filter_attribute_not_in_list(allEC2Instances,
-                        "count", allowed_types, true)
+                        "count", allowed_instant_count, true)
 
 
 # Main rule
