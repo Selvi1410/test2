@@ -1,10 +1,9 @@
-import "tfconfig/v2" as config
-import "tfplan/v2" as plan
-import "strings"
+import "tfconfig/v2" as confi
+import "types"
 
 
 find_all_resources = func() {
-	resources = filter tfconfig.resources as address, r {
+	resources = filter tfconfig.resources as count, r {
 		r.mode is "managed"
 	}
 
