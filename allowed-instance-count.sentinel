@@ -5,7 +5,6 @@ import "strings"
 
 allowed_instant_count = 1
 
-
 allEC2Instances = filter tfconfig.resources as _, rc {
      rc.type is "aws_instance"
 
