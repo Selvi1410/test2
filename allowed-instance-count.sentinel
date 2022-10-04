@@ -3,7 +3,7 @@ import "tfconfig/v2" as tfconfig
 import "strings"
 
 
-allowed_instant_count = {1}
+allowed_instant_count = 1
 
 
 allEC2Instances = filter tfconfig.resources as _, rc {
