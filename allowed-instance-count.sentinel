@@ -1,4 +1,4 @@
-import "tfconfig/v2" as confi
+import "tfconfig/v2" as config
 import "types"
 
 
