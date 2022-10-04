@@ -13,7 +13,7 @@ find_all_resources = func() {
 allowed_instant_count = 1
 
 
-allEC2Instances = tfconfig.find_all_resources("aws_instance")
+allEC2Instances = tfconfig.find_blocks("aws_instance")
 
 
 # Warnings will be printed for all violations since the last parameter is true
