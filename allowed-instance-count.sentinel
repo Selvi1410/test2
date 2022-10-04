@@ -1,4 +1,5 @@
 import "tfconfig-functions" as config
+import "tfplan/v2" as tfplan
 import "types"
 
 ec2_instances = filter tfplan.resource_changes as _, rc {
