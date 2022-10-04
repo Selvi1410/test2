@@ -9,7 +9,7 @@ policy "restrict-instance-type" {
 }
 
   
-policy "allowed-instance-count" {
-  source  = "./allowed-instance-count.sentinel"
+policy "allowed-region" {
+  source  = "./allowed-region.sentinel"
   enforcement_level = "hard-mandatory"
 }
