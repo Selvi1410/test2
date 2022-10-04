@@ -1,0 +1,15 @@
+import "tfconfig/v2" as tfconfig
+
+valid_regions = "ap-southeast-1"
+ 
+aws_providers = filter tfconfig.providers as _, provider {
+	provider.name is "aws"
+}
+ 
+main = rule {
+	all aws_providers as _, provider {
+		all provider.config.region as _, region {
+      region in valid_regions
+    }
+  }
+}
