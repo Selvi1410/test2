@@ -1,15 +1,41 @@
-import "tfconfig/v2" as tfconfig
+import "tfconfig-functions" as config
 
-valid_regions = "ap-southeast-1"
- 
-aws_providers = filter tfconfig.providers as _, provider {
-	provider.name is "aws"
+# Standard imports
+import "tfconfig/v2" as tfconfig
+import "tfrun"
+import "strings"
+
+# Import aws-functions/aws-functions.sentinel as aws
+import "aws-functions" as aws
+
+# Allowed AWS regions
+allowed_regions = ["ap-southeast-1"]
+
+# Get all AWS providers
+all_aws_providers = config.find_providers_by_type("aws")
+
+# Process all AWS providers
+validated_providers =
+            aws.filter_providers_by_regions(all_aws_providers, allowed_regions)
+
+# Compare numbers and print messages
+num_all_aws_providers = length(all_aws_providers)
+num_validated_providers = length(validated_providers)
+difference = num_all_aws_providers - num_validated_providers
+print("Number of AWS providers:", num_all_aws_providers)
+print("Number of validated AWS providers", num_validated_providers)
+print("Difference:", difference)
+
+# Prevent use of AWS_DEFAULT_REGION and AWS_PROFILE environment variables
+aws_env_vars_validated = true
+if "AWS_DEFAULT_REGION" in keys(tfrun.variables) or
+   "AWS_PROFILE" in keys(tfrun.variables) {
+  print("Workspaces are not allowed to set the AWS_DEFAULT_REGION and AWS_PROFILE environment variables.")
+  aws_env_vars_validated = false
 }
- 
+
+validated = aws_env_vars_validated and difference is 0
+# Main rule
 main = rule {
-	all aws_providers as _, provider {
-		all provider.tfconfig.region as _, region {
-      region in valid_regions
-    }
-  }
+  validated
 }
