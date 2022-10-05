@@ -8,7 +8,7 @@ aws_providers = filter tfconfig.providers as _, provider {
  
 main = rule {
 	all aws_providers as _, provider {
-		all provider.config.region as _, region {
+		all provider.tfconfig.region as _, region {
       region in valid_regions
     }
   }
