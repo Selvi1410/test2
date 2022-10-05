@@ -6,7 +6,7 @@ import "tfrun"
 import "strings"
 
 # Import aws-functions/aws-functions.sentinel as aws
-import "aws-functions" as aws
+
 
 # Allowed AWS regions
 allowed_regions = ["ap-southeast-1"]
