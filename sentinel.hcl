@@ -52,8 +52,8 @@ policy "restrict-ami-owners" {
   source  = "./restrict-ami-owners.sentinel"
   enforcement_level = "hard-mandatory"
 }
-policy "restrict-az" {
-  source  = "./restrict-availability-zone.sentinel"
+policy "restrict-availability-zones" {
+  source  = "./restrict-availability-zones.sentinel"
   enforcement_level = "hard-mandatory"
 }
 
