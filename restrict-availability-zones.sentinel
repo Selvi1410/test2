@@ -8,6 +8,10 @@
 # with alias "plan"
 import "tfplan/v2" as plan
 
+find_resources_from_plan = func(type) {
+
+  resources = {}
+
 # Allowed EC2 Zones
 # Include "null" to allow missing or computed values
 allowed_zones = [
