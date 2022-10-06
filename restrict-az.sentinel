@@ -7,7 +7,7 @@
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
 # with alias "plan"
 import "tfplan/v2" as plan
-inport "tfconfig-functions" as config
+import "tfconfig-functions" as config
 
 # Allowed EC2 Zones
 # Include "null" to allow missing or computed values
