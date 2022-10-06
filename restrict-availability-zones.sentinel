@@ -1,8 +1,13 @@
+# the region of the AWS provider since that requires the
+# tfconfig/v2 import.
+
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
 import "tfplan/v2" as plan
 
 
-ec2_instance = filter tfplan.resource_changes as _, rc {
-  rc.type is "aws_ec2_instance" and
+aws_instance = filter tfplan.resource_changes as _, rc {
+  rc.type is "aws_instance" and
   (rc.change.actions contains "create" or rc.change.actions is ["update"])
 }
 # Allowed EC2 Zones
@@ -13,11 +18,10 @@ allowed_zones = [
 
 
 zones_allowed = rule {
-    all EC2Instances as _, instance {
-    instance.change.after.zones in allowed_zones
+    allEC2Instances as _, instance {
+    aws_instance.change.after_unknown.availability_zone in allowed_zones
     }
 
-}
 
 # Main rule
 main = rule {
