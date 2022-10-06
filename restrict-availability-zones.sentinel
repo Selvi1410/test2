@@ -17,6 +17,7 @@ zones_allowed = rule {
     instance.change.after.zones in allowed_zones
     }
 
+}
 
 # Main rule
 main = rule {
