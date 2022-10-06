@@ -7,7 +7,13 @@
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
 # with alias "plan"
 
-import "tfplan/v2" as plan
+import "tfplan-functions" as plan
+import "strings"
+
+
+find_resources_from_plan = func(type) {
+
+  resources = {}
 
 # Allowed EC2 Zones
 # Include "null" to allow missing or computed values
