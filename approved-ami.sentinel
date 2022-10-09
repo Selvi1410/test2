@@ -1,8 +1,6 @@
 import "tfplan/v2" as tfplan
 import "tfconfig/v2" as tfconfig
-allvpcs = filter tfconfig.resources as _, rc {
-    rc.type is "aws_vpc"
-}
+
 approved_amis = ["ami-0708edb40a885c6ee"]
 allec2 = filter tfplan.resource_changes as _, rc {
     rc.type is "aws_instance" and
